@@ -75,14 +75,29 @@ def run_query(sql_str: str = ""):
   # Step 1: Read the csv file into a dataframe
   # Dataset from https://www.kaggle.com/gpreda/covid-world-vaccination-progress
   input_df = pd.read_csv('/content/test_data/country_vaccinations.csv')
+  orders_df = pd.read_csv('/content/test_data/orders.csv')
+  employees_df = pd.read_csv('/content/test_data/employees.csv')
 
   if sql_str.replace("\n", "").upper()=="REEMPLAZAR" or sql_str=="":
+    print("-"*30 + ">" + "DATASET: country_vaccinations")
     input_df.info()
-    return input_df.head()
+    print("\n\n")
+    print("-"*30 + ">" + "DATASET: orders")
+    orders_df.info()
+    print("\n\n")
+    print("-"*30 + ">" + "DATASET: employees")
+    employees_df.info()
+    return (input_df.head(), orders_df.head(), employees_df.info())
     
   # Step 2: Upload the dataframe to a SQL Table
   pd_to_sqlDB(input_df,
               table_name='country_vaccinations',
+              db_name='default.db')
+  pd_to_sqlDB(orders_df,
+              table_name='orders',
+              db_name='default.db')
+  pd_to_sqlDB(employees_df,
+              table_name='employees',
               db_name='default.db')
 
   # Step 3: Write the SQL query in a string variable
