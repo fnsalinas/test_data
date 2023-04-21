@@ -78,8 +78,7 @@ def run_query(sql_str: str = ""):
 
   if sql_str=="REEMPLAZAR" or sql_str=="":
     input_df.info()
-    print(input_df.head())
-    return ""
+    return input_df
     
   # Step 2: Upload the dataframe to a SQL Table
   pd_to_sqlDB(input_df,
