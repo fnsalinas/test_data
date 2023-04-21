@@ -73,9 +73,10 @@ def run_query(sql_str: str = ""):
   # Step 1: Read the csv file into a dataframe
   # Dataset from https://www.kaggle.com/gpreda/covid-world-vaccination-progress
   input_df = pd.read_csv('/content/test_data/country_vaccinations.csv')
-  input_df.info()
 
-  if sql_str=="":
+  if sql_str=="REEMPLAZAR" or sql_str=="":
+    input_df.info()
+    print(input_df.head())
     return ""
     
   # Step 2: Upload the dataframe to a SQL Table
