@@ -87,7 +87,7 @@ def run_query(sql_str: str = ""):
     print("\n\n")
     print("-"*30 + ">" + "DATASET: employees")
     employees_df.info()
-    return (input_df.head(), orders_df.head(), employees_df.info())
+    # return (input_df.head(), orders_df.head(), employees_df.info())
     
   # Step 2: Upload the dataframe to a SQL Table
   pd_to_sqlDB(input_df,
