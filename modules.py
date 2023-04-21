@@ -76,7 +76,7 @@ def run_query(sql_str: str = ""):
   # Dataset from https://www.kaggle.com/gpreda/covid-world-vaccination-progress
   input_df = pd.read_csv('/content/test_data/country_vaccinations.csv')
 
-  if sql_str=="REEMPLAZAR" or sql_str=="":
+  if sql_str.replace("\n", "").upper()=="REEMPLAZAR" or sql_str=="":
     input_df.info()
     return input_df.head()
     
