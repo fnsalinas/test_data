@@ -30,11 +30,10 @@ def pd_to_sqlDB(input_df: pd.DataFrame,
     logging.info(f'SQL DB {db_name} created')
 
     # Step 4: Create Table
-    sql_string = f"""
-    DROP TABLE IF EXISTS {table_name};
-    CREATE TABLE {table_name} ({cols_string});
-    """
-    cur.execute(sql_string)
+    sql_string1 = f"""DROP TABLE IF EXISTS {table_name};"""
+    sql_string2 = f"""CREATE TABLE {table_name} ({cols_string});"""
+    cur.execute(sql_string1)
+    cur.execute(sql_string2)
     logging.info(f'SQL Table {table_name} created with {len(cols)} columns')
 
     # Step 5: Upload the dataframe
